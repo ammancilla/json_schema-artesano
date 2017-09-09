@@ -1,4 +1,4 @@
-require 'json_schema/artesano/version'
+require_relative 'artesano/hand'
 
 module JsonSchema
   module Artesano
