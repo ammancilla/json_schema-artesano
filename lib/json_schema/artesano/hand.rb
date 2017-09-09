@@ -5,7 +5,9 @@
 
 require 'json'
 require 'json_schema'
+
 require_relative 'tools/null'
+require_relative 'tools/data_type'
 
 module JsonSchema
   module Artesano
