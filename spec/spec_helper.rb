@@ -12,3 +12,8 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+def support_sketch(name)
+  schema_path = File.expand_path("../support/#{name}.json", __FILE__)
+  JSON.parse( File.read(schema_path) )
+end
