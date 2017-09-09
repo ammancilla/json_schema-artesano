@@ -1,8 +1,14 @@
 # JsonSchema::Artesano
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/json_schema/artesano`. To experiment with that code, run `bin/console` for an interactive prompt.
+If you give a **sketch, materials and tools** to an Artesano (Artesan), he will use the tools to transform the materials into a product that (hopefully) matches the sketch.
 
-TODO: Delete this and the text above, and describe your gem
+Similary, if you give a **JSON Schema (sketch) and a strategy (tool)** to `JsonSchema::Artesano`, it will give you data (or object, or whatever else you asked for) conformed to the schema.
+
+**Mmm I don't believe you. You didn't give it materials!?**
+> Because it has it owns materials!
+
+### **AND HOW COULD THIS BE USEFUL?**
+I came up with this after looking for a ruby 'JSON Schema faker' (give it a JSON Schema, get fake data according to the schema) and not finding any that fullfilled my needs. I know this gem is not what I was looking for, but now I can just create a simple strategy to generate fake data, pass it to `JsonSchema::Artesano` and get what I originally wanted. Someone could also create an strategy to generate ruby objects instead or similar.
 
 ## Installation
 
@@ -32,7 +38,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/json_schema-artesano.
+Bug reports and pull requests are welcome on GitHub at https://github.com/ammancilla/json_schema-artesano.
 
 ## License
 
