@@ -1,6 +1,7 @@
 #
-# This tool (strategy) doesn't provide any value.
-# Assigns 'nil' to any primitive or enum property.
+# The Null strategy uses 'nil' as the generated data for any primitive or enum property.
+#
+# This strategy DOES NOT GENERATE VALID DATA agains the given JSON schema
 #
 
 module JsonSchema
