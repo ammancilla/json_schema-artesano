@@ -8,6 +8,7 @@ require 'json_schema'
 
 require_relative 'tools/null'
 require_relative 'tools/data_type'
+require_relative 'tools/static'
 
 module JsonSchema
   module Artesano
