@@ -1,6 +1,6 @@
 #
 # Give it a sketch (JSON Schema), a Tool (strategy), and it
-# will *mold* a product that (hopefully) matches the sketch.
+# will *mold* a product (hopefully) conform to the sketch.
 #
 
 require 'json'
@@ -33,43 +33,45 @@ module JsonSchema
 
       def transform(material)
         case material.type[0]
-        when 'object'
-          tool.shape_object( transform_object(material) )
-        when 'array'
-          tool.shape_array( transform_array(material) )
         when *PRIMITIVE_MATERIALS
           tool.shape_primitive(material)
-        else
+        when 'object'
           # OneOf
           if material.one_of.any?
-            return tool.shape_oneof(material)
+            item = tool.select_oneof( material.one_of )
+            return tool.shape_object( transform_object(item) )
+          end
+
+          # Plain
+          tool.shape_object( transform_object(material) )
+        when 'array'
+          # AnyOf
+          if material.any_of.any?
+            items = tool.select_anyof( material.any_of )
+            items = [items] unless items.is_a?(Array)
+
+            return tool.shape_array( transform_array(items) )
           end
 
           # AllOf
           if material.all_of.any?
-            return tool.shape_allof(material)
+            array = material.all_of
+            return tool.shape_array( transform_array(array) )
           end
 
-          # AnyOf
-          if material.any_of.any?
-            return tool.shape_anyof(material)
-          end
-
+          tool.shape_array( transform_array(material) )
+        else
           # Enum
           if !material.enum.nil?
             return tool.shape_enum(material)
           end
 
-          # Non expanded reference
-          if !material.reference.nil?
-            # Expand, transform & process
-          end
-
           # Null
-          # Nothing for nil yet
+          puts "Material not supported: #{material.inspect_schema}. PARENT: #{material.parent.inspect_schema}"
+          return nil
 
           # Anything else
-          raise "Material not supported: #{material}"
+          # raise "Material not supported: #{material.inspect}. PARENT: #{material.parent.inspect}"
         end
       end
 
@@ -82,8 +84,8 @@ module JsonSchema
       end
 
       def transform_array(array)
-        items = [array.items].flatten
-        items.map! { |item| transform(item) }
+        items = array.respond_to?(:items) ? [array.items] : array
+        items.flatten.map { |item| transform(item) }
       end
 
       def material(sketch)

@@ -8,10 +8,7 @@ module JsonSchema
   module Artesano
     module Tools
       class Static
-        attr_reader :opts
-
-        def initialize(opts = {})
-          @opts = opts
+        def initialize
         end
 
         def shape_object(material)
@@ -25,34 +22,26 @@ module JsonSchema
         def shape_primitive(material)
           case material.type[0]
           when 'boolean'
-            opts[:boolean] || false
+            false
           when 'integer'
-            opts[:integer] || static_integer
+            22
           when 'number'
-            opts[:number] || static_number
+            22.15
           when 'string'
-            opts[:string] || static_string
+            'Lorem ipsum dolor sit amet'
           end
         end
 
         def shape_enum(material)
-          opts[:enum]  || material.enum[0]
+          material.enum[0]
         end
 
-        private
-
-        # TODO: Handle metadata to
-        # generate valid data
-        def static_string
-          'Lorem ipsum dolor sit amet'
+        def select_oneof(materials)
+          materials[0]
         end
 
-        def static_integer
-          22
-        end
-
-        def static_number
-          22.15
+        def select_anyof(materials)
+          materials[0]
         end
       end
     end

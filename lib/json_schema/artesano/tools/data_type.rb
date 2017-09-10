@@ -27,6 +27,14 @@ module JsonSchema
         def shape_enum(material)
           'enum'
         end
+
+        def select_oneof(materials)
+          materials.sample
+        end
+
+        def select_anyof(materials)
+          materials.sample
+        end
       end
     end
   end

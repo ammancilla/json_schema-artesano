@@ -15,8 +15,8 @@ module JsonSchema
           material
         end
 
-        def shape_array(material)
-          material
+        def shape_array(materials)
+          materials
         end
 
         def shape_primitive(material)
@@ -25,6 +25,14 @@ module JsonSchema
 
         def shape_enum(material)
           nil
+        end
+
+        def select_oneof(materials)
+          materials.sample
+        end
+
+        def select_anyof(materials)
+          materials.sample
         end
       end
     end
