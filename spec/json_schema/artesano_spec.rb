@@ -24,7 +24,7 @@ RSpec.describe JsonSchema::Artesano do
       let(:tool) { JsonSchema::Artesano::Tools::Null }
 
       it 'works' do
-	expect(subject).to eq(expected_null)
+        expect(subject).to eq(expected_null)
       end
     end
 
@@ -32,7 +32,7 @@ RSpec.describe JsonSchema::Artesano do
       let(:tool) { JsonSchema::Artesano::Tools::DataType }
 
       it 'works' do
-	expect(subject).to eq(expected_data_type)
+        expect(subject).to eq(expected_data_type)
       end
     end
 
@@ -40,7 +40,7 @@ RSpec.describe JsonSchema::Artesano do
       let(:tool) { JsonSchema::Artesano::Tools::Static }
 
       it 'works' do
-	expect(subject).to eq(expected_static)
+        expect(subject).to eq(expected_static)
       end
     end
   end

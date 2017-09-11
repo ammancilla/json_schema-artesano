@@ -5,7 +5,7 @@ If you give a **sketch, materials and tools** to an Artesano (Artesan), he will 
 Similary, if you give a **JSON Schema (sketch) and a strategy (tool)** to `JsonSchema::Artesano`, it will give you data (or objects, or whatever else you ask for) conformed to the schema.
 
 **Mmm I don't believe you. You didn't give it materials!?**
-> Because it has it owns materials!
+> Because it has it owns materials! (thanks to the `json_schema` gem).
 
 ### **AND HOW COULD THIS BE USEFUL?**
 I came up with this after looking for a ruby 'JSON Schema faker' (give it a JSON Schema, get fake data according to the schema) and not finding any that fullfilled my needs. I know this gem is not what I was looking for, but now I can just create a simple faker strategy, pass it to `JsonSchema::Artesano` and get what I originally wanted. Someone could also create an strategy to generate ruby objects instead or similar.
