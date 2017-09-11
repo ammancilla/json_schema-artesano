@@ -1,7 +1,8 @@
 #
 # The Null strategy uses 'nil' as the generated data for any primitive or enum property.
 #
-# This strategy DOES NOT GENERATE VALID DATA agains the given JSON schema
+# IMPORTANT:
+# Generates valid data agains a given schema? NO!
 #
 
 module JsonSchema

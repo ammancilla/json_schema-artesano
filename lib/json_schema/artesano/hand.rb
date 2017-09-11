@@ -1,13 +1,11 @@
 #
 # Give it a sketch (JSON Schema), a Tool (strategy), and it
-# will *mold* a product (hopefully) conform to the sketch.
+# will *mold* a product (hopefully) conformmatches the sketch.
 #
 
 require 'json'
 require 'json_schema'
 
-require_relative 'tools/null'
-require_relative 'tools/data_type'
 require_relative 'tools/static'
 
 module JsonSchema
@@ -17,7 +15,7 @@ module JsonSchema
 
       attr_reader :tool
 
-      def initialize(tool: Tools::Null)
+      def initialize(tool: Tools::Static)
         self.use_tool(tool)
       end
 
@@ -67,11 +65,6 @@ module JsonSchema
           end
 
           # Null
-          puts "Material not supported: #{material.inspect_schema}. PARENT: #{material.parent.inspect_schema}"
-          return nil
-
-          # Anything else
-          # raise "Material not supported: #{material.inspect}. PARENT: #{material.parent.inspect}"
         end
       end
 

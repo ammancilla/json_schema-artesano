@@ -1,4 +1,6 @@
 require 'spec_helper'
+require_relative '../../lib/json_schema/artesano/tools/null'
+require_relative '../../lib/json_schema/artesano/tools/data_type'
 
 RSpec.describe JsonSchema::Artesano do
   let(:sketch) { support_sketch('schema') }

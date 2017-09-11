@@ -1,7 +1,8 @@
 #
 # The DataType strategy uses the data type of any primitive or enum property as the generated data.
 #
-# This strategy DOES NOT GENERATE VALID DATA agains the given JSON schema
+# IMPORTANT:
+# Generates valid data agains a given schema? NO!
 #
 
 module JsonSchema

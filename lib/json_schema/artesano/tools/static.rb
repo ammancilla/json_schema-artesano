@@ -1,7 +1,8 @@
 #
-# The Static strategy generate static values according to the data type of any primitive or enum property.
+# The Static strategy generates static values according to the data type of any primitive or enum property.
 #
-# This strategy DOES NOT GENERATE VALID DATA (yet) agains the given JSON schema
+# IMPORTANT:
+# Generates valid data agains a given schema? NO!
 #
 
 module JsonSchema
