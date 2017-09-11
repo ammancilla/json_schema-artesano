@@ -2,13 +2,62 @@
 
 If you give a **sketch, materials and tools** to an Artesano (Artesan), he will use the tools to transform the materials into a product that (hopefully) matches the sketch.
 
-Similary, if you give a **JSON Schema (sketch) and a strategy (tool)** to `JsonSchema::Artesano`, it will give you data (or object, or whatever else you asked for) conformed to the schema.
+Similary, if you give a **JSON Schema (sketch) and a strategy (tool)** to `JsonSchema::Artesano`, it will give you data (or objects, or whatever else you ask for) conformed to the schema.
 
 **Mmm I don't believe you. You didn't give it materials!?**
 > Because it has it owns materials!
 
 ### **AND HOW COULD THIS BE USEFUL?**
-I came up with this after looking for a ruby 'JSON Schema faker' (give it a JSON Schema, get fake data according to the schema) and not finding any that fullfilled my needs. I know this gem is not what I was looking for, but now I can just create a simple strategy to generate fake data, pass it to `JsonSchema::Artesano` and get what I originally wanted. Someone could also create an strategy to generate ruby objects instead or similar.
+I came up with this after looking for a ruby 'JSON Schema faker' (give it a JSON Schema, get fake data according to the schema) and not finding any that fullfilled my needs. I know this gem is not what I was looking for, but now I can just create a simple faker strategy, pass it to `JsonSchema::Artesano` and get what I originally wanted. Someone could also create an strategy to generate ruby objects instead or similar.
+
+## Usage
+
+```ruby
+# the sketch
+schema = {
+    "title": "Person",
+    "type": "object",
+    "properties": {
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "age": {
+            "description": "Age in years",
+            "type": "integer",
+            "minimum": 0
+        },
+        "genre": {
+            "type": "string",
+            "enum": ["male", "female"]
+        },
+        "married": { "type": "boolean" }
+    },
+    "required": ["firstName", "lastName"]
+}
+
+# the tool
+require 'json_schema-artesano/json_schema/artesano/tools/static'
+
+# the product
+product = JsonSchema::Artesano.mold(sketch: sketch, tool: JsonSchema::Artesano::Tools::Static)
+
+JSON.pretty_generate(product)
+
+# =>
+#
+# {
+#   "firstName": "Lorem ipsum dolor sit amet",
+#   "lastName": "Lorem ipsum dolor sit amet",
+#   "age": 22,
+#   "genre": "Lorem ipsum dolor sit amet",
+#   "married": false
+# }
+#
+
+```
+
+## Artesano Tools (Strategies)
+
+TODO: Describe how to create strategies and the provided ones.
 
 ## Installation
 
@@ -25,10 +74,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install json_schema-artesano
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 
