@@ -48,7 +48,7 @@ JSON.pretty_generate(product)
 #   "firstName": "Lorem ipsum dolor sit amet",
 #   "lastName": "Lorem ipsum dolor sit amet",
 #   "age": 22,
-#   "genre": "Lorem ipsum dolor sit amet",
+#   "genre": "male",
 #   "married": false
 # }
 #
