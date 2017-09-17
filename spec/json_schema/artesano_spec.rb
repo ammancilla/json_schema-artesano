@@ -14,7 +14,7 @@ RSpec.describe JsonSchema::Artesano do
   end
 
   let(:expected_static) do
-    {"@type"=>"Lorem ipsum dolor sit amet", "id"=>22, "uuid"=>"Lorem ipsum dolor sit amet", "@poll_type"=>"Lorem ipsum dolor sit amet", "title"=>"Lorem ipsum dolor sit amet", "image"=>{"@type"=>"Lorem ipsum dolor sit amet", "cloudinary_id"=>"Lorem ipsum dolor sit amet", "caption"=>"Lorem ipsum dolor sit amet", "height"=>22, "width"=>22, "original_format"=>"Lorem ipsum dolor sit amet"}, "answers"=>[{"id"=>22, "uuid"=>"Lorem ipsum dolor sit amet", "title"=>"Lorem ipsum dolor sit amet", "correct"=>false, "un_enum"=>"apo"}]}
+    {"@type"=>"poll", "id"=>22, "uuid"=>"Lorem ipsum dolor sit amet", "@poll_type"=>"poll", "title"=>"Lorem ipsum dolor sit amet", "image"=>{"@type"=>"image", "cloudinary_id"=>"Lorem ipsum dolor sit amet", "caption"=>"Lorem ipsum dolor sit amet", "height"=>22, "width"=>22, "original_format"=>"jpg"}, "answers"=>[{"id"=>22, "uuid"=>"Lorem ipsum dolor sit amet", "title"=>"Lorem ipsum dolor sit amet", "correct"=>false, "un_enum"=>"apo"}]}
   end
 
   subject { JsonSchema::Artesano.mold(sketch: sketch, tool: tool) }
