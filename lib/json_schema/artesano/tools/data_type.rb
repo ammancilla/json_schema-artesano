@@ -21,12 +21,12 @@ module JsonSchema
         end
 
         def shape_primitive(material)
-          type = material.type[0]
-          material.enum.nil? ? type : "enum[#{type}]"
+          material.type[0]
         end
 
         def shape_enum(material)
-          'enum'
+          enum_type = material.type[0]
+          enum_type.nil? ? 'enum' : "enum[#{enum_type}]"
         end
 
         def select_oneof(materials)
