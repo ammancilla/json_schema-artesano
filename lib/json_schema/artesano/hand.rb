@@ -30,6 +30,11 @@ module JsonSchema
       private
 
       def transform(material)
+        # Enum
+        if !material.enum.nil?
+          return tool.shape_enum(material)
+        end
+
         case material.type[0]
         when *PRIMITIVE_MATERIALS
           tool.shape_primitive(material)
@@ -59,11 +64,6 @@ module JsonSchema
 
           tool.shape_array( transform_array(material) )
         else
-          # Enum
-          if !material.enum.nil?
-            return tool.shape_enum(material)
-          end
-
           # Null
         end
       end
