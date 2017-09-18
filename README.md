@@ -1,6 +1,6 @@
 # JsonSchema::Artesano
 
-If you give a **sketch, materials and tools** to an Artesano (Artesan), they will use the tools to transform the materials into a product that (hopefully) matches the sketch.
+If you give a **sketch, materials and tools** to an artesano (artisan), they will use the tools to transform the materials into a product that (hopefully) matches the sketch.
 
 Similary, if you give a **JSON Schema (sketch) and a strategy (tool)** to `JsonSchema::Artesano`, it will give you data (or objects, or whatever else you ask for) conformed to the schema.
 
