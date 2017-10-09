@@ -35,33 +35,32 @@ module JsonSchema
           return tool.shape_enum(material)
         end
 
+        # OneOf
+        if material.one_of.any?
+          item = tool.select_oneof( material.one_of )
+          return transform(item)
+        end
+
+        # AnyOf
+        if material.any_of.any?
+          items = tool.select_anyof( material.any_of )
+          items = [items] unless items.is_a?(Array)
+
+          return tool.shape_array( transform_array(items) )
+        end
+
+        # AllOf
+        if material.all_of.any?
+          array = material.all_of
+          return tool.shape_array( transform_array(array) )
+        end
+
         case material.type[0]
         when *PRIMITIVE_MATERIALS
           tool.shape_primitive(material)
         when 'object'
-          # OneOf
-          if material.one_of.any?
-            item = tool.select_oneof( material.one_of )
-            return tool.shape_object( transform_object(item) )
-          end
-
-          # Plain
           tool.shape_object( transform_object(material) )
         when 'array'
-          # AnyOf
-          if material.any_of.any?
-            items = tool.select_anyof( material.any_of )
-            items = [items] unless items.is_a?(Array)
-
-            return tool.shape_array( transform_array(items) )
-          end
-
-          # AllOf
-          if material.all_of.any?
-            array = material.all_of
-            return tool.shape_array( transform_array(array) )
-          end
-
           tool.shape_array( transform_array(material) )
         else
           # Null
